@@ -4,12 +4,18 @@ import { ExternalLink } from '@/components/ExternalLink'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import { ThemedText } from '@/components/ThemedText'
 import { ThemedView } from '@/components/ThemedView'
-import { useEffect, useState } from 'react'
-import { Plant, PlantsGetter, PlantsSupabaseRepository } from 'my-shared'
+import {
+  Plant,
+  PlantsGetter,
+  PlantsSupabaseRepository,
+  store,
+  useDeletePlant,
+  useGetPlants,
+} from 'my-shared'
 import PlantItem from '@/sections/plants/list/PlantItem'
 
 export default function TabPlantsScreen() {
-  const [plants, setPlants] = useState<Plant[]>([])
+  /*const [plants, setPlants] = useState<Plant[]>([])
   useEffect(() => {
     new PlantsGetter(new PlantsSupabaseRepository())
       .run()
@@ -20,7 +26,10 @@ export default function TabPlantsScreen() {
       .catch((error) => {
         console.error(error)
       })
-  }, [])
+  }, [])*/
+
+  const { plants } = useGetPlants()
+  const { deletePlantById } = useDeletePlant()
   return (
     <ThemedView style={{ flex: 1 }}>
       <ThemedView style={styles.titleContainer}>
