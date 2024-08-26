@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import useAddPlant from '@/src/sections/plants/add_form/useAddPlant.ts'
+import { useAddPlant } from 'my-shared'
 type FormData = {
   name: string
   description: string

@@ -1,9 +1,10 @@
-import { useAppDispatch } from '@/src/sections/shared/hooks/store.ts'
+import { useAppDispatch } from '../shared/hooks/hooks'
 import {
-  addPlant as addPlanDispatchAction,
   deletePlantById,
-} from '@/src/sections/plants/slice.ts'
-import { GetPlantsSupabaseRepository, PlantAdder, Plant } from 'my-shared'
+  addPlant as addPlanDispatchAction,
+} from '../plants/redux/slice'
+
+import { Plant, PlantAdder, PlantsSupabaseRepository } from '../../modules'
 
 const useAddPlant = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +17,7 @@ const useAddPlant = () => {
     } as Plant
     dispatch(addPlanDispatchAction(plant))
 
-    new PlantAdder(new GetPlantsSupabaseRepository())
+    new PlantAdder(new PlantsSupabaseRepository())
       .run(plant)
       .then(() => {})
       .catch((error) => {
@@ -30,4 +31,4 @@ const useAddPlant = () => {
   }
 }
 
-export default useAddPlant
+export { useAddPlant }

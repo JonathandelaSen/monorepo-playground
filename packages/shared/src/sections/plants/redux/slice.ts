@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { Plant } from 'my-shared'
+import { Plant } from '@/src/modules'
 
 const plants: Plant[] = []
 
@@ -21,5 +21,6 @@ export const plantsSlice = createSlice({
   },
 })
 
-export default plantsSlice.reducer
+const plantsReducer = plantsSlice.reducer
+export { plantsReducer }
 export const { deletePlantById, addPlant, setPlants } = plantsSlice.actions

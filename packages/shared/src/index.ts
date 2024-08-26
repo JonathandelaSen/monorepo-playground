@@ -1,2 +1,3 @@
-export * from './modules/plants'
-export * from './modules/shared'
+export * from './modules/'
+export * from './sections/'
+export * from './config'

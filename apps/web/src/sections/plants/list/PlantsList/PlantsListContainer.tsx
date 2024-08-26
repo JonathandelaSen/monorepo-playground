@@ -1,6 +1,5 @@
-import useDeletePlant from '@/src/sections/plants/list/useDeletePlant.ts'
 import PlantsList from '@/src/sections/plants/list/PlantsList/PlantsList.tsx'
-import useGetPlants from '@/src/sections/plants/list/useGetPlants.ts'
+import { useDeletePlant, useGetPlants } from 'my-shared'
 
 const PlantsListContainer = () => {
   const { plants } = useGetPlants()

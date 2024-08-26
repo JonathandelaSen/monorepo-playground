@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import plantsReducer from '../../plants/slice.ts'
+import { plantsReducer } from '../../plants'
 
 export const store = configureStore({
   reducer: {

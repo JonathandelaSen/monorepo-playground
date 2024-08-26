@@ -1,11 +1,11 @@
-import { useAppDispatch } from '@/src/sections/shared/hooks/store.ts'
-import { deletePlantById, setPlants } from '@/src/sections/plants/slice.ts'
+import { deletePlantById, setPlants } from '../plants/redux/slice'
 import {
-  GetPlantsSupabaseRepository,
   Plant,
   PlantDeleter,
   PlantsGetter,
-} from 'my-shared'
+  PlantsSupabaseRepository,
+} from '../../modules'
+import { useAppDispatch } from '../../sections'
 /*import PlantsGetter from "packages/shared/src/modules/plants/application/PlantsGetter.ts";
 import PlantDeleter from '@/src/modules/plants/application/PlantDeleter'
 import GetPlantsSupabaseRepository from '@/src/modules/plants/infrastructure/GetPlantsSupabaseRepository.ts'
@@ -17,12 +17,12 @@ const useDeletePlant = () => {
   return {
     deletePlantById: (plantId: string) => {
       dispatch(deletePlantById(plantId))
-      new PlantDeleter(new GetPlantsSupabaseRepository())
+      new PlantDeleter(new PlantsSupabaseRepository())
         .run(plantId)
         .catch((error) => {
           //revert state
           console.error(error)
-          new PlantsGetter(new GetPlantsSupabaseRepository())
+          new PlantsGetter(new PlantsSupabaseRepository())
             .run()
             .then((plants: Plant[]) => {
               dispatch(setPlants(plants))
@@ -35,4 +35,4 @@ const useDeletePlant = () => {
   }
 }
 
-export default useDeletePlant
+export { useDeletePlant }
